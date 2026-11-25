@@ -109,7 +109,7 @@ h1 span{display:block}
 </nav>
 
 <header class="hero" id="home">
-  <img class="bg" src="images/hero.jpg" alt="" onerror="this.remove()">
+  <img class="bg" src="hero.jpg" alt="" onerror="this.remove()">
   <h1><span class="l1">msf KAVANUR</span><span class="l2">PANCHAYATH COMMITTEE</span></h1>
   <div class="btns">
     <a class="btn" href="https://www.instagram.com/msf_kavanur_panchayath/" target="_blank" rel="noopener"><svg class="i"><use href="#ig"/></svg>Instagram</a>
@@ -145,7 +145,7 @@ h1 span{display:block}
 <div class="lbx" id="lbx"><img alt=""></div>
 
 <script>
-/* Committee members: [name, role]. Photos: images/member-1.jpg ... member-13.jpg in this order */
+/* Committee members: [name, role]. Photos: member-1.jpg ... member-13.jpg in this order */
 const M=[
 ["Sahir Pulikkal","Secretary, msf Malappuram|District Committee"],
 ["Riyas Kanniyan","President, msf Eranad|Constituency Committee"],
@@ -162,12 +162,12 @@ const M=[
 ["Anshid","Secretary, msf Kavanur|Panchayath Committee"]
 ];
 const ROWS=[3,3,4,3]; /* cards per row on desktop */
-const GAL=8; /* gallery photos: images/gallery-1.jpg ... gallery-8.jpg */
+const GAL=8; /* gallery photos: gallery-1.jpg ... gallery-8.jpg */
 const $=id=>document.getElementById(id);
-const card=(m,i,j)=>`<div class="card rv" style="--d:${j*.12}s"><div class="ph"><img src="images/member-${i+1}.jpg" alt="${m[0]}" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="lb"><b>${m[0]}</b><small>${m[1].replace('|','<br>')}</small></div></div>`;
+const card=(m,i,j)=>`<div class="card rv" style="--d:${j*.12}s"><div class="ph"><img src="member-${i+1}.jpg" alt="${m[0]}" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="lb"><b>${m[0]}</b><small>${m[1].replace('|','<br>')}</small></div></div>`;
 let n0=0;
 $('grid').innerHTML=ROWS.map(c=>{const a=n0;n0+=c;return M.slice(a,n0).map((m,j)=>card(m,a+j,j)).join('')+'<i class="br"></i>'}).join('');
-const tile=(i,h)=>`<a href="images/gallery-${i}.jpg"${h?' aria-hidden="true" tabindex="-1"':''}><img src="images/gallery-${i}.jpg" alt="${h?'':'msf Kavanur Panchayath Committee photo '+i}" loading="lazy" decoding="async" onerror="this.remove()"></a>`;
+const tile=(i,h)=>`<a href="gallery-${i}.jpg"${h?' aria-hidden="true" tabindex="-1"':''}><img src="gallery-${i}.jpg" alt="${h?'':'msf Kavanur Panchayath Committee photo '+i}" loading="lazy" decoding="async" onerror="this.remove()"></a>`;
 const row=(ids,c)=>{const n=2*Math.ceil(200/(ids.length*24.5));return `<div class="row ${c}" style="animation-duration:${Math.round(n/2*ids.length*24.5/4.5)}s">${Array.from({length:n},(_,k)=>ids.map(i=>tile(i,k)).join('')).join('')}</div>`};
 const A=Array.from({length:GAL},(_,i)=>i+1),H=Math.ceil(GAL/2);
 $('gal').innerHTML=row(A.slice(0,H),'l')+row(A.slice(H),'r');
